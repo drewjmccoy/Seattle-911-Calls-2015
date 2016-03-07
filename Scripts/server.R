@@ -8,13 +8,11 @@ library(leaflet)
 
 shinyServer(function(input, output) {
   reactive({
-    data <- read.csv("/Data/911Calls.csv")
+    data <- read.csv("Data/911Calls.csv")
     data <- sort_by_date(data)
   })
   output$calls_map <- renderLeaflet({
     build_map(data,input$slider_range[1],(input$slider_range[2] + 1))})
-observe({
-  leafletProxy("calls_map",data =)
-})
+
   })
 
