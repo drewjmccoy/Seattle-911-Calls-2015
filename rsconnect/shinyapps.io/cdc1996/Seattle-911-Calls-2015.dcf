@@ -1,0 +1,9 @@
+name: Seattle-911-Calls-2015
+account: cdc1996
+server: shinyapps.io
+appId: 87657
+bundleId: 389640
+url: https://cdc1996.shinyapps.io/Seattle-911-Calls-2015/
+when: 1457376836.32915
+asMultiple: FALSE
+asStatic: FALSE

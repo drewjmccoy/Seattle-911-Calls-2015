@@ -1,0 +1,9 @@
+name: 911Calls
+account: cdc1996
+server: shinyapps.io
+appId: 87566
+bundleId: 389142
+url: https://cdc1996.shinyapps.io/911Calls/
+when: 1457327324.09407
+asMultiple: FALSE
+asStatic: FALSE

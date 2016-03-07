@@ -1,5 +1,4 @@
 # Server script
-setwd("/Users/colecansler/Desktop/498F/Seattle-911-Calls-2015")
 source('Scripts/InteractiveMap.R')
 source('Scripts/DataWranglingScript.R')
 library(dplyr)
