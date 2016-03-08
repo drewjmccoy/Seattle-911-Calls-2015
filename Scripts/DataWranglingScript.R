@@ -8,6 +8,15 @@ sort_by_date <- function(data) {
   return (data)
 }
 
+# Most instances 
+most_instances <- function(data, description){
+street <- filter(data, Event.Clearance.Description == description) %>% 
+            group_by(Hundred.Block.Location) %>% 
+              summarize(instances = n()) %>% 
+                filter(instances == max(instances)) %>% 
+                  select(Hundred.Block.Location)
+return(street)
+}
 # Violent crimes only
 violent_crimes <- function(data) {
   data <-
@@ -80,13 +89,13 @@ monthly_row_nums <- function(month) {
 # Lattitudes and longitudes for common destinations
 lat_and_lng <- function (place) {
   if (place == "the ave") {
-    lat_lng <- c(47.661281,-122.313154,17)
+    lat_lng <- c(47.661281,-122.313154,16)
   }
   if (place == "space needle") {
-    lat_lng <- c(47.620423,-122.349355,17)
+    lat_lng <- c(47.620423,-122.349355,16)
   }
   if (place == "china town") {
-    lat_lng <- c(47.598409,-122.325060,17)
+    lat_lng <- c(47.598409,-122.325060,16)
   }
   if (place == "Seattle") {
     lat_lng <- c(47.606209,-122.332071, 10)
