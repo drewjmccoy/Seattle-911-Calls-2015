@@ -88,18 +88,5 @@ monthly_row_nums <- function(month) {
 
 # Lattitudes and longitudes for common destinations
 lat_and_lng <- function (place) {
-  if (place == "the ave") {
-    lat_lng <- c(47.661281,-122.313154,16)
-  }
-  if (place == "space needle") {
-    lat_lng <- c(47.620423,-122.349355,16)
-  }
-  if (place == "china town") {
-    lat_lng <- c(47.598409,-122.325060,16)
-  }
-  if (place == "Seattle") {
-    lat_lng <- c(47.606209,-122.332071, 10)
-  }
-  
-  return (lat_lng)
+  return (geocode(place))
 }

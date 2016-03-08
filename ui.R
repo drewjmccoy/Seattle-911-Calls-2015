@@ -12,13 +12,8 @@ shinyUI(navbarPage(
     titlePanel("Map Settings"),
     
     sidebarPanel(
-      selectInput(
-        "select_place", label = h3("Popular Locations"),
-        choices = list(
-          "Seattle" = "Seattle", "The Ave" = "the ave", "Space Needle" = "space needle", "China Town" = "china town"
-        ),
-        selected = "Seattle"
-      ),
+      textInput("location", label = h3("Navigate to Landmark or Address"), value = "ex: Space Needle")
+      ,
       checkboxInput("violent_crimes", label = "Violent Crimes Only", value = TRUE)
     ),
     mainPanel(leafletOutput('calls_map'))
