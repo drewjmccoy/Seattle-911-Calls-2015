@@ -12,6 +12,7 @@ shinyServer(function(input, output) {
     build_map(data,input$violent_crimes)
   })
   observe({
+    input$violent_crimes
     latitude <- lat_and_lng(input$location)[2]
     longitude <- lat_and_lng(input$location)[1]
     zoom_level <- 17
