@@ -3,6 +3,12 @@ f <- list(
   size = 18,
   color = "#7f7f7f"
 )
+topText <- renderText({
+  "Below is a breakdown of 911 calls in Seattle by specific subgroup.
+    You can use the dropdown on the left to select which type of crime you'd like to investigate:" 
+  })
+lowerText <- renderText({"Below is a chart displaying the frequencies in which certain crimes were reported, shown by general group:"
+  })
 
 call_breakdown <- function(data){
 types <- unique(data$Event.Clearance.Group)
