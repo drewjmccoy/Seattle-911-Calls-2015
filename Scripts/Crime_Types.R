@@ -74,7 +74,7 @@ y <- list (
   titlefont = f
 )
 
-state_data <- layout(data, title = paste("Breakdown of 2015 Seattle 911 Calls for", Event.Clearance.Description, "by Subgroup", sep = " "), xaxis = x, yaxis = y ,margin = m)
+individual_plot <- layout(data, title = paste("Breakdown of 2015 Seattle 911 Calls for", Event.Clearance.Description, "by Subgroup", sep = " "), xaxis = x, yaxis = y ,margin = m)
 return(individual_plot)
 }
 specific_data(data, "ASSAULTS")
