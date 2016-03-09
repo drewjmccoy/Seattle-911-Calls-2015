@@ -23,12 +23,13 @@ call_breakdown <- function(data, slice){
                         hoverinfo = "text"
   )
   m1 <- list (
-    b = 200,
-    t = 75
+    b = 150,
+    t = 100,
+    r = 125
   )
   #set x axis title
   x1 <- list (
-    title = "Category of Crime",
+    #title = "Category of Crime",
     titlefont = f
   )
   #set y axis title
@@ -56,9 +57,10 @@ specific_data <- function(data, crime_type) {
                              hoverinfo = "text"
   )
   m2 <- list (
-    b = 200,
+    b = 250,
     r = 100,
-    t = 75
+    t = 75,
+    r = 125
   )
   #set x axis title
   x2 <- list (
