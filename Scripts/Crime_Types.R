@@ -6,7 +6,8 @@ f <- list(
 call_breakdown <- function(data, slice){
   #types <- unique(data$Event.Clearance.Group)
   summary <- group_by(data, Event.Clearance.Group) %>%
-    summarize(instances = n())
+    summarize(instances = n()) %>% 
+    arrange(-instances)
   if(slice == 1){
   summary <- slice(summary,1:21)
   }
@@ -23,7 +24,7 @@ call_breakdown <- function(data, slice){
   )
   m1 <- list (
     b = 200,
-    pad = 4
+    t = 75
   )
   #set x axis title
   x1 <- list (
@@ -42,7 +43,8 @@ call_breakdown <- function(data, slice){
 specific_data <- function(data, crime_type) {
   summary <- group_by(data, Event.Clearance.Group, Event.Clearance.Description) %>%
     summarize(instances = n())  
-  individual_data <- filter(summary, Event.Clearance.Group == crime_type)
+  individual_data <- filter(summary, Event.Clearance.Group == crime_type) %>% 
+                arrange(-instances)
   individual_data$Event.Clearance.Description <- as.character(individual_data$Event.Clearance.Description)
   individual_data <- mutate(individual_data, greatest_street = sapply(individual_data$Event.Clearance.Description,most_instances, data = data))
   individual_plot <- plot_ly(individual_data,
@@ -54,11 +56,9 @@ specific_data <- function(data, crime_type) {
                              hoverinfo = "text"
   )
   m2 <- list (
-    l = 100,
-    r = 50,
-    b = 325,
-    t = 75,
-    pad = 4
+    b = 200,
+    r = 100,
+    t = 75
   )
   #set x axis title
   x2 <- list (
@@ -70,6 +70,6 @@ specific_data <- function(data, crime_type) {
     title = "Instances",
     titlefont = f
   )
-  individual_plot <- layout(individual_plot, title = paste("Breakdown of 2015 Seattle 911 Calls for", crime_type, "by Subgroup", sep = " "), xaxis = x2, yaxis = y2 )
+  individual_plot <- layout(individual_plot, title = paste("Breakdown of 2015 Seattle 911 Calls for", crime_type, "by Subgroup", sep = " "), xaxis = x2, yaxis = y2, margin = m2 )
   return(individual_plot)
 }
