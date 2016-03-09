@@ -1,3 +1,9 @@
+f <- list(
+  family = "Courier New, monospace",
+  size = 18,
+  color = "#7f7f7f"
+)
+
 call_breakdown <- function(data){
 types <- unique(data$Event.Clearance.Group)
 summary <- group_by(data, Event.Clearance.Group, Event.Clearance.Description) %>%
@@ -7,10 +13,32 @@ state_data <- plot_ly(summary,
                          y = instances,
                          name = "Crime",
                          type = "bar",
-                         hoverinfo = "none"
+                         text = paste(Event.Clearance.Group, ":", instances, "instances", sep = " "),
+                         hoverinfo = "text"
                         )
+m <- list (
+  l = 100,
+  r = 50,
+  b = 325,
+  t = 75,
+  pad = 4
+)
+
+#set x axis title
+x <- list (
+  title = "Category of Crime",
+  titlefont = f
+)
+
+#set y axis title
+y <- list (
+  title = "Instances",
+  titlefont = f
+)
+state_data <- layout(data, title = "Breakdown of 2015 Seattle 911 Calls by Category", xaxis = x, yaxis = y ,margin = m)
 return(state_data)
 }
+call_breakdown(data)
 
 specific_data <- function(data, type) {
 summary <- group_by(data, Event.Clearance.Group, Event.Clearance.Description) %>%
@@ -23,9 +51,31 @@ individual_plot <- plot_ly(individual_data,
                         y = instances,
                         name = "Traffic Violations",
                         type = "bar",
-                        text = paste("The worst street for", Event.Clearance.Description, ":", greatest_street, sep = " "),
+                        text = paste(instances, "instances on", greatest_street, sep = " "),
                         hoverinfo = "text"
                         )
+m <- list (
+  l = 100,
+  r = 50,
+  b = 325,
+  t = 75,
+  pad = 4
+)
+
+#set x axis title
+x <- list (
+  title = "Specific Category of Crime",
+  titlefont = f
+)
+
+#set y axis title
+y <- list (
+  title = "Instances",
+  titlefont = f
+)
+
+state_data <- layout(data, title = paste("Breakdown of 2015 Seattle 911 Calls for", Event.Clearance.Description, "by Subgroup", sep = " "), xaxis = x, yaxis = y ,margin = m)
 return(individual_plot)
 }
+specific_data(data, "ASSAULTS")
 
