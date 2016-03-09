@@ -3,11 +3,11 @@
 source('Scripts/InteractiveMap.R')
 source('Scripts/DataWranglingScript.R')
 source('Scripts/Crime_Types.R')
-library(shiny)
-library(plotly)
 library(dplyr)
+library(shiny)
 library(leaflet)
 library(ggmap)
+library(plotly)
 # Read in Data Set
 data <- read.csv("Data/911Calls.csv")
 
@@ -40,3 +40,4 @@ shinyServer(function(input, output) {
   })
   
 })
+
