@@ -49,6 +49,11 @@ shinyUI(navbarPage(
                topText(),
                plotlyOutput('general_breakdown'),
                lowerText(),
+               plotlyOutput('crime_type_plot'),
+               renderText({ "Below is a breakdown of 911 calls in Seattle by specific subgroup." }),
+               renderText({"You can use the dropdown on the left to select which type of crime you'd like to investigate" }),
+               plotlyOutput('general_breakdown'),
+               renderText({"Below is a chart displaying the frequencies in which certain crimes were reported, shown by general group"}),
                plotlyOutput('crime_type_plot')
              )
            ))

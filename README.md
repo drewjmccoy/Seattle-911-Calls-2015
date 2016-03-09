@@ -9,4 +9,8 @@ The data we are using is from the *data.seattle.gov* website and can be found [h
 
 Goals
 -----
-The purpose of our project was to build a easy to use web application that both city officals, and its citizens could use and gain valuable information from. A couple questions arise 
+The purpose of our project was to build a easy to use web application that both city officals, and its citizens could use and gain valuable information from. A few of the questions about the data set that we wanted to provide answers to are, where are 911 calls coming from, what types of calls are being made, and how are the rate of calls changing over time. We decided to make a tabbed structure, with each tab providing an answer to one of these questions. 
+
+Code Structure
+--------------
+
