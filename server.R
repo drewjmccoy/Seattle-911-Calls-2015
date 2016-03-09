@@ -1,16 +1,21 @@
 # Server script
+# Import necessary scripts and packages
 source('Scripts/InteractiveMap.R')
 source('Scripts/DataWranglingScript.R')
 library(dplyr)
 library(shiny)
 library(leaflet)
 library(ggmap)
+# Read in Data Set
 data <- read.csv("Data/911Calls.csv")
-data <- sort_by_date(data)
+
 shinyServer(function(input, output) {
+  # Call's map function to render map in Shiny App
   output$calls_map <- renderLeaflet({
     build_map(data,input$violent_crimes)
   })
+  
+  # Observe function that updates what part of the map is viewed
   observe({
     input$violent_crimes
     latitude <- lat_and_lng(input$location)[2]
