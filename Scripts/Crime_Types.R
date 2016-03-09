@@ -78,4 +78,3 @@ state_data <- layout(data, title = paste("Breakdown of 2015 Seattle 911 Calls fo
 return(individual_plot)
 }
 specific_data(data, "ASSAULTS")
-

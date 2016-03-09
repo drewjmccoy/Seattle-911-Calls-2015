@@ -24,14 +24,6 @@ shinyServer(function(input, output) {
     call_breakdown(data)
   })
   
-  # Set text to display on "Interactive Plots" tab
-  topText <- renderText({
-    "Below is a breakdown of 911 calls in Seattle by specific subgroup.
-    You can use the dropdown on the left to select which type of crime you'd like to investigate:" 
-  })
-  lowerText <- renderText({"Below is a chart displaying the frequencies in which certain crimes were reported, shown by general group:"
-  })
-  
   # Observe function that updates what part of the map is viewed
   observe({
     input$violent_crimes
