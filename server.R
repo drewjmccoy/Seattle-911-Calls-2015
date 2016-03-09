@@ -3,8 +3,9 @@
 source('Scripts/InteractiveMap.R')
 source('Scripts/DataWranglingScript.R')
 source('Scripts/Crime_Types.R')
-library(dplyr)
 library(shiny)
+library(plotly)
+library(dplyr)
 library(leaflet)
 library(ggmap)
 # Read in Data Set
@@ -14,6 +15,13 @@ shinyServer(function(input, output) {
   # Call's map function to render map in Shiny App
   output$calls_map <- renderLeaflet({
     build_map(data,input$violent_crimes)
+  })
+  # Call's crime_type function to render plot
+  output$crime_type_plot <- renderPlotly({
+    specific_data(data,input$crime_type) 
+  })
+  output$general_breakdown <- renderPlotly({
+    call_breakdown(data)
   })
   
   # Observe function that updates what part of the map is viewed
@@ -31,6 +39,4 @@ shinyServer(function(input, output) {
       setView(lng = longitude, lat = latitude, zoom = zoom_level)
   })
   
-  # Call's crime_type function to render plot
-  output$crime_type <- renderPlotly({specific_data(data,input$crime_type) })
 })

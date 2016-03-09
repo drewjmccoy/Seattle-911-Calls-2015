@@ -1,5 +1,3 @@
-library(dplyr)
-library(plotly)
 call_breakdown <- function(data){
 types <- unique(data$Event.Clearance.Group)
 summary <- group_by(data, Event.Clearance.Group, Event.Clearance.Description) %>%
@@ -14,10 +12,10 @@ state_data <- plot_ly(summary,
 return(state_data)
 }
 
-specific_data <- function(data, crime_type) {
+specific_data <- function(data, type) {
 summary <- group_by(data, Event.Clearance.Group, Event.Clearance.Description) %>%
   summarize(instances = n())  
-individual_data <- filter(summary, Event.Clearance.Group == crime_type)
+individual_data <- filter(summary, Event.Clearance.Group == type)
 individual_data$Event.Clearance.Description <- as.character(individual_data$Event.Clearance.Description)
 individual_data <- mutate(individual_data, greatest_street = sapply(individual_data$Event.Clearance.Description,most_instances, data = data))
 individual_plot <- plot_ly(individual_data,
