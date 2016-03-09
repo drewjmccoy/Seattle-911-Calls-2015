@@ -20,5 +20,24 @@ shinyUI(navbarPage(
     mainPanel(leafletOutput('calls_map'))
   ),
   # Tab that shows other interactive plots
-  tabPanel("Interactive Plots")
+  tabPanel("Interactive Plots",
+           sidebarPanel(selectInput("crime_type", label = h4("Choose Type of Crime"), 
+                       choices = list("Assaults" = "ASSAULTS", 
+                                      "Auto Thefts" = "AUTO THEFTS", 
+                                      "Burglary" = "BURGLARY", 
+                                      "Car Prowl" = "CAR PROWL",
+                                      "Disturbances" = "DISTURBANCES",
+                                      "Liquor Violations" = "LIQUOR VIOLATIONS",
+                                      "Narcotics Complaints" = "NARCOTICS COMPLAINTS",
+                                      "Lost, Found, and Missing Persons)" = "PERSONS - LOST, FOUND, MISSING",
+                                      "Missing and Found Property" = "PROPERTY - MISSING, FOUND",
+                                      "Traffic Related Calls" = "TRAFFIC RELATED CALLS", 
+                                      selected = "ASSAULTS")
+           
+           
+           )
+),
+mainPanel(
+  plotlyOutput('crime_type')
+)
 ))

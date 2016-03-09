@@ -2,6 +2,7 @@
 # Import necessary scripts and packages
 source('Scripts/InteractiveMap.R')
 source('Scripts/DataWranglingScript.R')
+source('Scripts/Crime_Types.R')
 library(dplyr)
 library(shiny)
 library(leaflet)
@@ -29,4 +30,7 @@ shinyServer(function(input, output) {
     leafletProxy("calls_map") %>%
       setView(lng = longitude, lat = latitude, zoom = zoom_level)
   })
+  
+  # Call's crime_type function to render plot
+  output$crime_type <- renderPlotly({specific_data(data,input$crime_type) })
 })
