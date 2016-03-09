@@ -16,7 +16,7 @@ call_breakdown <- function(data){
                         text = paste(Event.Clearance.Group, ":", instances, "instances", sep = " "),   
                         hoverinfo = "text"
   )
-  m <- list (
+  m1 <- list (
     l = 100,
     r = 50,
     b = 325,
@@ -24,16 +24,16 @@ call_breakdown <- function(data){
     pad = 4
   )
   #set x axis title
-  x <- list (
+  x1 <- list (
     title = "Category of Crime",
     titlefont = f
   )
   #set y axis title
-  y <- list (
+  y1 <- list (
     title = "Instances",
     titlefont = f
   )
-  state_data <- layout(data, title = "Breakdown of 2015 Seattle 911 Calls by Category", xaxis = x, yaxis = y ,margin = m)
+  state_data <- layout(state_data, title = "Breakdown of 2015 Seattle 911 Calls by Category", xaxis = x1, yaxis = y1)
   return(state_data)
 }
 
@@ -51,7 +51,7 @@ specific_data <- function(data, crime_type) {
                              text = paste("Most incidents on:", greatest_street, sep = " "),
                              hoverinfo = "text"
   )
-  m <- list (
+  m2 <- list (
     l = 100,
     r = 50,
     b = 325,
@@ -59,15 +59,15 @@ specific_data <- function(data, crime_type) {
     pad = 4
   )
   #set x axis title
-  x <- list (
+  x2 <- list (
     title = "Specific Category of Crime",
     titlefont = f
   )
   #set y axis title
-  y <- list (
+  y2 <- list (
     title = "Instances",
     titlefont = f
   )
-  #individual_plot <- layout(data, title = paste("Breakdown of 2015 Seattle 911 Calls for", Event.Clearance.Description, "by Subgroup", sep = " "), xaxis = x, yaxis = y ,margin = m)
+  individual_plot <- layout(individual_plot, title = paste("Breakdown of 2015 Seattle 911 Calls for", crime_type, "by Subgroup", sep = " "), xaxis = x2, yaxis = y2 )
   return(individual_plot)
 }
