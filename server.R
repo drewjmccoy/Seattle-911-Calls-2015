@@ -20,10 +20,12 @@ shinyServer(function(input, output) {
   output$crime_type_plot <- renderPlotly({
     specific_data(data,input$crime_type) 
   })
-  output$general_breakdown <- renderPlotly({
-    call_breakdown(data)
+  output$general_breakdown1 <- renderPlotly({
+    call_breakdown(data,1)
   })
-  
+  output$general_breakdown2 <- renderPlotly({
+    call_breakdown(data,2)
+  })  
   # Observe function that updates what part of the map is viewed
   observe({
     input$violent_crimes

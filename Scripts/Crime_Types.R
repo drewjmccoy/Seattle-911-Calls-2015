@@ -1,13 +1,18 @@
-
 f <- list(
-  family = "Courier New, monospace",
-  size = 18,
+  family = "Arial",
+  size = 15,
   color = "#7f7f7f"
 )
-call_breakdown <- function(data){
-  types <- unique(data$Event.Clearance.Group)
-  summary <- group_by(data, Event.Clearance.Group, Event.Clearance.Description) %>%
+call_breakdown <- function(data, slice){
+  #types <- unique(data$Event.Clearance.Group)
+  summary <- group_by(data, Event.Clearance.Group) %>%
     summarize(instances = n())
+  if(slice == 1){
+  summary <- slice(summary,1:21)
+  }
+  else{
+  summary <- slice(summary,22:42)
+  }
   state_data <- plot_ly(summary,
                         x = Event.Clearance.Group,
                         y = instances,
@@ -17,10 +22,7 @@ call_breakdown <- function(data){
                         hoverinfo = "text"
   )
   m1 <- list (
-    l = 100,
-    r = 50,
-    b = 325,
-    t = 75,
+    b = 200,
     pad = 4
   )
   #set x axis title
@@ -33,7 +35,7 @@ call_breakdown <- function(data){
     title = "Instances",
     titlefont = f
   )
-  state_data <- layout(state_data, title = "Breakdown of 2015 Seattle 911 Calls by Category", xaxis = x1, yaxis = y1)
+  state_data <- layout(state_data, title = "Breakdown of 2015 Seattle 911 Calls by Category", xaxis = x1, yaxis = y1, margin = m1)
   return(state_data)
 }
 

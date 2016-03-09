@@ -51,9 +51,10 @@ shinyUI(navbarPage(
       topText(),
       plotlyOutput('crime_type_plot'),
       lowerText <- renderText({
-        "Below is a chart displaying the frequencies in which certain crimes were reported, shown by general group:"
+        "Below are two charts that together, display the frequencies in which certain crimes were reported, shown by general group:"
       }),
       lowerText(),
-      plotlyOutput('general_breakdown'))
+      plotlyOutput('general_breakdown1'),
+      plotlyOutput('general_breakdown2'))
   )
 ))
