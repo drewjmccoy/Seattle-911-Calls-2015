@@ -9,13 +9,15 @@ sort_by_date <- function(data) {
 }
 
 # Most instances 
-most_instances <- function(data, description){
+most_instances <- function(description, data){
+data$Event.Clearance.Description <- as.character(data$Event.Clearance.Description)
+data$Hundred.Block.Location <- as.character(data$Hundred.Block.Location)
 street <- filter(data, Event.Clearance.Description == description) %>% 
-            group_by(Hundred.Block.Location) %>% 
-              summarize(instances = n()) %>% 
-                filter(instances == max(instances)) %>% 
-                  select(Hundred.Block.Location)
-return(street)
+             group_by(Hundred.Block.Location) %>% 
+              summarize(instances = n()) %>%   
+                arrange(-instances)
+value <- street$Hundred.Block.Location[1]
+return(value)
 }
 # Violent crimes only
 violent_crimes <- function(data) {
@@ -86,7 +88,7 @@ monthly_row_nums <- function(month) {
   return (row_num)
 }
 
-# Lattitudes and longitudes for common destinations
+# Lattitudes and longitudes for a given destinations
 lat_and_lng <- function (place) {
   return (geocode(place))
 }

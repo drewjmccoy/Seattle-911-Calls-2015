@@ -21,7 +21,6 @@ shinyServer(function(input, output) {
       longitude <- -122.332071
       zoom_level <- 10
     }
-    
     leafletProxy("calls_map") %>%
       setView(lng = longitude, lat = latitude, zoom = zoom_level)
   })
