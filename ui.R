@@ -9,8 +9,6 @@ shinyUI(navbarPage(
     "Interactive map",
     div(class = "outer"),
     
-  
-    
     sidebarPanel(h1("Map Settings"),
       textInput("location", label = h5("Navigate to Landmark or Address"), value = "ex: Space Needle")
       ,

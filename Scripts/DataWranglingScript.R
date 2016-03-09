@@ -1,3 +1,4 @@
+# Script that contains helpful functions for manipulating data
 library(lubridate)
 library(dplyr)
 
@@ -8,7 +9,7 @@ sort_by_date <- function(data) {
   return (data)
 }
 
-# Most instances 
+# Returns the street where the most 911 calls, that meet a given description, happen.
 most_instances <- function(description, data){
 data$Event.Clearance.Description <- as.character(data$Event.Clearance.Description)
 data$Hundred.Block.Location <- as.character(data$Hundred.Block.Location)
@@ -19,7 +20,7 @@ street <- filter(data, Event.Clearance.Description == description) %>%
 value <- street$Hundred.Block.Location[1]
 return(value)
 }
-# Violent crimes only
+# Returns the data filtered down to contain only "violent" crimes
 violent_crimes <- function(data) {
   data <-
     filter(
@@ -43,7 +44,7 @@ violent_crimes <- function(data) {
 }
 
 # Returns the column number where a month ends
-# Useful for filtering certain months
+# Useful for filtering certain the data down to certain months
 monthly_row_nums <- function(month) {
   row_num <- -1
   if (month == 1) {
