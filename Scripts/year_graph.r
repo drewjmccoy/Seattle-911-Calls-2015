@@ -1,5 +1,3 @@
-
-
 format_date <- function(date) {
   date <- unlist(strsplit(date, " "))[1]
   temp <- as.integer(unlist(strsplit(date, "/")))
@@ -15,13 +13,7 @@ format_date <- function(date) {
   return(result)
 }
 
-year_graph <- function(data) {
-  setwd("/Users/drewmccoy/GitHub/info-498f/assignments/Seattle-911-Calls-2015")
-  data <- read.csv("Data/911Calls.csv", stringsAsFactors = FALSE)
-  
-  library(dplyr)
-  library(plotly)
-  
+day_graph <- function(data) {
   sorted_data <- data %>% 
     mutate(date = unlist(lapply(data$At.Scene.Time, format_date))) %>% 
     group_by(date) %>% 
@@ -32,5 +24,25 @@ year_graph <- function(data) {
     y = calls, 
     mode = "markers"
     )
+  return(graph)
 }  
+
+time_graph <- function(data) {
+  sorted_data <- data %>% 
+    mutate(time = unlist(lapply(data$At.Scene.Time, format_time))) %>% 
+    group_by(time) %>% 
+    summarize(calls = n())
+  
+  graph <- sorted_data %>% plot_ly(
+    x = time,
+    y = calls, 
+    mode = "markers"
+  )
+  return(graph)
+}
+
+format_time <- function(time) {
+  return(as.integer(substr(time, nchar(time) - 4, nchar(time) - 3)))
+}
+
   
