@@ -48,6 +48,7 @@ specific_data <- function(data, crime_type) {
                 arrange(-instances)
   individual_data$Event.Clearance.Description <- as.character(individual_data$Event.Clearance.Description)
   individual_data <- mutate(individual_data, greatest_street = sapply(individual_data$Event.Clearance.Description,most_instances, data = data))
+  
   individual_plot <- plot_ly(individual_data,
                              x = Event.Clearance.Description,
                              y = instances,
