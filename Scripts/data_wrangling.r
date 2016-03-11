@@ -15,6 +15,7 @@ time_graph_data <- data %>%
   mutate(time = unlist(lapply(data$At.Scene.Time, format_time))) %>% 
   group_by(time) %>% 
   summarize(calls = n())
+ 
 
 # data for the month_graph
 month_graph_data <- format_month_data(data)

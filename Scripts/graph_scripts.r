@@ -36,14 +36,15 @@ time_graph <- function(data) {
   ) %>% 
     layout(title = "Calls by Time of the Day",
            yaxis = list(title = "Number of Calls"), 
-           xaxis = list(title = "Time"))
+           xaxis = list(title = "Time in Hours"))
   return(graph)
 }
 
 # returns a bar plotly of calls by month
 month_graph <- function(data) {
   margin <- list(
-    b = 125
+    b = 100,
+    r = 50
   )
   graph <- plot_ly(data,
           x = Month,
@@ -53,7 +54,7 @@ month_graph <- function(data) {
           text = paste("Most Common Crime Type:", Event.Clearance.Description, "Overall Count", Count,  sep = " "),   
           hoverinfo = "text"
   ) %>% 
-    layout(title = 'Crime by Month')
+    layout(title = 'Crime by Month', margin = margin)
   return(graph)
 }
 
