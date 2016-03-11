@@ -6,9 +6,9 @@ library(shiny)
 library(leaflet)
 library(ggmap)
 library(plotly)
-source('Scripts/graph_scripts.r')
-source('Scripts/data_wrangling_scripts.r')
-source('Scripts/data_wrangling.r')
+source('scripts/graph_scripts.r')
+source('scripts/data_wrangling_scripts.r')
+source('scripts/data_wrangling.r')
 
 shinyServer(function(input, output) {
   # call's map function to render map in Shiny App
