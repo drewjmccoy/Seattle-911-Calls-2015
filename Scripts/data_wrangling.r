@@ -2,10 +2,10 @@
 library(dplyr)
 
 # source in scripts
-source("Scripts/data_wrangling_scripts.r")
+source("scripts/data_wrangling_scripts.r")
 
 # Read in data
-data <- read.csv("Data/911Calls.csv", stringsAsFactors = FALSE)
+data <- read.csv("data/911Calls.csv", stringsAsFactors = FALSE)
 
 # data for the day_graph
 day_graph_data <- data %>%
