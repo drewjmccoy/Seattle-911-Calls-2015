@@ -8,25 +8,28 @@ library(plotly)
 source('scripts/graph_scripts.r')
 source('scripts/data_wrangling_scripts.r')
 source('scripts/data_wrangling.r')
-source('scripts/crime_types.r')
 
 shinyServer(function(input, output) {
   # Call's map function to render map in Shiny App
   output$calls_map <- renderLeaflet({
-    build_map(data,input$violent_crimes)
+    build_map(data, input$violent_crimes)
   })
+  
   # Call's crime_type function to render plot
   output$crime_type_plot <- renderPlotly({
-    specific_data(data,input$crime_type) 
+    specific_breakdown_graph(specific_breakdown_graph_data,input$crime_type) 
   })
+  
   # Call's call_breakdown function to render plot
   output$general_breakdown1 <- renderPlotly({
-    call_breakdown(data,1)
+    call_breakdown_graph(call_breakdown_graph_data, 1)
   })
+  
   # Call's  call_breakdown funciton to render plot
   output$general_breakdown2 <- renderPlotly({
-    call_breakdown(data,2)
+    call_breakdown_graph(call_breakdown_graph_data, 1)
   }) 
+  
   # Call's month_graph function to render plot
   output$time_plot <- renderPlotly({
     graph_to_display(input$graph_choice)
