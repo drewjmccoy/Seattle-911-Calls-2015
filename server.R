@@ -1,15 +1,16 @@
 # Server script
 # Import necessary scripts and packages
-source('Scripts/InteractiveMap.R')
-source('Scripts/DataWranglingScript.R')
-source('Scripts/Crime_Types.R')
+source('scripts/graph_scripts.r')
+source('scripts/data_wrangling_scripts.r')
+source('scripts/data_wrangling.r')
+source('scripts/crime_types.r')
 library(dplyr)
 library(shiny)
 library(leaflet)
 library(ggmap)
 library(plotly)
 # Read in Data Set
-data <- read.csv("Data/911Calls.csv")
+data <- read.csv("data/911Calls.csv")
 
 shinyServer(function(input, output) {
   # Call's map function to render map in Shiny App

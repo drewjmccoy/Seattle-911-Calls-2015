@@ -1,15 +1,15 @@
 
 # Server script
 setwd("/Users/colecansler/Desktop/498F/Seattle-911-Calls-2015")
-source('Scripts/InteractiveMap.R')
-source('Scripts/DataWranglingScript.R')
+source('scripts/interactive_map.r')
+source('scripts/data_wrangling_scripts.r')
 library(dplyr)
 library(shiny)
 library(leaflet)
 
 shinyServer(function(input, output) {
   reactive({
-    data <- read.csv("Data/911Calls.csv")
+    data <- read.csv("data/911Calls.csv")
     data <- sort_by_date(data)
   })
   output$calls_map <- renderLeaflet({
