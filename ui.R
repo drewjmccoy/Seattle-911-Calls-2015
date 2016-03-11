@@ -20,6 +20,12 @@ shinyUI(navbarPage(
       checkboxInput("violent_crimes", label = "Violent Crimes Only", value = TRUE)
     ),
     # Render map in main panel
+    mapText <- renderText({
+      "Shown below is a map of all the 911 Calls made in the Seattle area during the year 2015. On the sidebar panel you
+      have the option to show all 911 calls or only 911 calls made about violent crimes. In addition you can enter an Seattle area
+      address or landmark to zoom in on that specific area of the map. Simply clear the search bar to reset the view." 
+    }),
+    mapText(),
     mainPanel(leafletOutput('calls_map'))
   ),
   # Tab that shows other interactive plots
