@@ -1,7 +1,15 @@
 # source in scripts
+source("Scripts/data_wrangling.r")
 
-# returns a scatter plotly of calls by day of year
-graph_to_display <- function(graph_num) {
+# require libraries
+library(plotly)
+library(leaflet)
+library(dplyr)
+
+# returns month_graph if graph_num = 1
+# returns day_graph if graph_num = 2
+# returns time_graph if graph_num = 3
+graph_to_display <- function(graph_num){
   if (graph_num == 1) {
     graph <- month_graph(month_graph_data)
   }
@@ -13,6 +21,7 @@ graph_to_display <- function(graph_num) {
   }
   return (graph)
 }
+
 # returns a scatter plotly of calls by day of the year
 day_graph <- function(data) {
   margin <- list(t = 50)
@@ -43,25 +52,29 @@ time_graph <- function(data) {
 
 # returns a bar plotly of calls by month
 month_graph <- function(data) {
-  margin <- list(b = 100,
-                 r = 50,
-                 t = 50)
-  graph <- plot_ly(
-    data,
-    x = Month,
-    y = Count,
-    name = "Crime by Month",
-    type = "bar",
-    text = paste(
-      "Most Common Crime Type:", Event.Clearance.Description, "Overall Count", Count,  sep = " "
-    ),
-    hoverinfo = "text"
-  ) %>%
+  margin <- list(
+    b = 100,
+    r = 50,
+    t = 50
+  )
+  graph <- plot_ly(data,
+          x = Month,
+          y = Count,
+          name = "Crime by Month",
+          type = "bar",
+          text = paste("Most Common Crime Type:", 
+                       Event.Clearance.Description, 
+                       "Overall Count", 
+                       Count,  
+                       sep = " "),   
+          hoverinfo = "text"
+  ) %>% 
     layout(title = 'Crime by Month', margin = margin)
   return(graph)
 }
 
-# Build's a leaflet map based on the given data. Filters the data down to just violent crimes if the violent condition is true
+# build's a leaflet map based on the given data. Filters the data down to just violent crimes 
+# if the violent condition is true
 build_map <- function(data, violent) {
   if (violent) {
     data <- violent_crimes(data)
@@ -72,7 +85,7 @@ build_map <- function(data, violent) {
   return (map)
 }
 
-# Builds a plotly histogram that shows a general breakdown of the types of 911 calls
+# returns a bar graph of the call type breakdown of either slice 1 or 2
 call_breakdown_graph <- function(data, slice) {
   # select slice of data to graph
   if (slice == 1) {
@@ -118,7 +131,7 @@ call_breakdown_graph <- function(data, slice) {
   return(state_data)
 }
 
-# Builds a plotly histogram that shows a specific breakdown of a given crime type
+# returns the specific crime type breakdown graph
 specific_breakdown_graph <- function(data, crime_type) {
   # filter down to specific clearence group
   specific_data <- data %>%
@@ -138,10 +151,10 @@ specific_breakdown_graph <- function(data, crime_type) {
               t = 75,
               r = 125)
   f <- list(size = 8)
-  #set x axis title
+  # set x axis title
   x2 <- list (title = "Specific Category of Crime",
               tickfont = f)
-  #set y axis title
+  # set y axis title
   y2 <- list (title = "Instances",
               tickfont = f)
   

@@ -1,3 +1,9 @@
+# require libraries
+library(dplyr)
+
+# source in scripts
+source("Scripts/data_wrangling_scripts.r")
+
 # Read in data
 data <- read.csv("Data/911Calls.csv", stringsAsFactors = FALSE)
 
@@ -25,7 +31,7 @@ call_breakdown_graph_data <- data %>%
 call_breakdown_graph_data[42,1] <- "FAIL TO REGISTER SEX OFFENDER"
 
 # data for the specific_breakdown graph
-specific_breakdown_graph_data <- data %>%
+specific_breakdown_graph_data <- data %>% 
   group_by(Event.Clearance.Group, Event.Clearance.Description) %>%
   summarize(instances = n()) %>%
   mutate(greatest_street = sapply(Event.Clearance.Description, most_instances, data = data))

@@ -1,29 +1,27 @@
-# Script that contains helpful functions for manipulating data
+# script that contains helpful functions for manipulating data
 library(lubridate)
 library(dplyr)
 
-# Sort's the data frame by date
+# sort's the data frame by date
 sort_by_date <- function(data) {
   data <-
     data[order(as.Date(data$At.Scene.Time, "%m/%d/%Y"), decreasing = FALSE),]
   return (data)
 }
 
-# Returns the street where the most 911 calls, that meet a given description, happen.
-most_instances <- function(description, data) {
-  data$Event.Clearance.Description <-
-    as.character(data$Event.Clearance.Description)
-  data$Hundred.Block.Location <-
-    as.character(data$Hundred.Block.Location)
-  street <-
-    filter(data, Event.Clearance.Description == description) %>%
-    group_by(Hundred.Block.Location) %>%
-    summarize(instances = n()) %>%
+# returns the street where the most 911 calls, that meet a given description, happen.
+most_instances <- function(description, data){
+  data$Event.Clearance.Description <- as.character(data$Event.Clearance.Description)
+  data$Hundred.Block.Location <- as.character(data$Hundred.Block.Location)
+  street <- filter(data, Event.Clearance.Description == description) %>% 
+    group_by(Hundred.Block.Location) %>% 
+    summarize(instances = n()) %>%   
     arrange(-instances)
   value <- street$Hundred.Block.Location[1]
   return(value)
 }
-# Returns the data filtered down to contain only "violent" crimes
+
+# returns the data filtered down to contain only "violent" crimes
 violent_crimes <- function(data) {
   data <-
     filter(
@@ -46,8 +44,8 @@ violent_crimes <- function(data) {
   return (data)
 }
 
-# Returns the column number where a month ends
-# Useful for filtering certain the data down to certain months
+# returns the column number where a month ends
+# useful for filtering certain the data down to certain months
 monthly_row_nums <- function(month) {
   row_num <- -1
   if (month == 1) {
@@ -92,7 +90,7 @@ monthly_row_nums <- function(month) {
   return (row_num)
 }
 
-# Lattitudes and longitudes for a given destinations
+# lattitudes and longitudes for a given destinations
 lat_and_lng <- function (place) {
   return (geocode(place))
 }
@@ -118,7 +116,7 @@ format_time <- function(time) {
   return(as.integer(substr(time, nchar(time) - 4, nchar(time) - 3)))
 }
 
-# Format's data for the month graph
+# format's data for the month graph
 format_month_data <- function(data) {
   new_data <- select(data, At.Scene.Time, Event.Clearance.Description)
   
