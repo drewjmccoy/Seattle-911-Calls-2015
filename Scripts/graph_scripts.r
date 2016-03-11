@@ -96,7 +96,8 @@ call_breakdown_graph <- function(data, slice) {
   #set y axis title
   y1 <- list (
     title = "Instances",
-    tickfont = f
+    tickfont = f,
+    range = c(0, 10000)
   )
   state_data <- data %>% plot_ly(
     x = Event.Clearance.Group,
@@ -109,7 +110,8 @@ call_breakdown_graph <- function(data, slice) {
     layout(title = "Breakdown of 2015 Seattle 911 Calls by Category", 
            xaxis = x1, 
            yaxis = y1, 
-           margin = m1)
+           margin = m1
+           )
   return(state_data)
 }
 
