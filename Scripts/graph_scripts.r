@@ -1,5 +1,5 @@
 # source in scripts
-source("Scripts/data_wrangling.r")
+source("scripts/data_wrangling.r")
 
 # require libraries
 library(plotly)
