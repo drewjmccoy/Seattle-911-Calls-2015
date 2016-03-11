@@ -1,5 +1,4 @@
 # source in scripts
-source("scripts/data_wrangling.r")
 
 # returns a scatter plotly of calls by day of year
 graph_to_display <- function(graph_num){

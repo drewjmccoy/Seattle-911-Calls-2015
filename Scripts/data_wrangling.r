@@ -1,8 +1,5 @@
 # Read in data
-data <- read.csv("data/911Calls.csv", stringsAsFactors = FALSE)
-
-# source in scripts
-source("scripts/data_wrangling_scripts.r")
+data <- read.csv("Data/911Calls.csv", stringsAsFactors = FALSE)
 
 # data for the day_graph
 day_graph_data <- data %>% 
