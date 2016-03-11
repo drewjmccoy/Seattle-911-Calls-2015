@@ -16,7 +16,7 @@ shinyServer(function(input, output) {
   
   # Call's crime_type function to render plot
   output$crime_type_plot <- renderPlotly({
-    specific_breakdown_graph(specific_breakdown_graph_data,input$crime_type) 
+    specific_breakdown_graph(specific_breakdown_graph_data,input$crime_type)
   })
   
   # Call's call_breakdown function to render plot
@@ -27,7 +27,7 @@ shinyServer(function(input, output) {
   # Call's  call_breakdown funciton to render plot
   output$general_breakdown2 <- renderPlotly({
     call_breakdown_graph(call_breakdown_graph_data, 2)
-  }) 
+  })
   
   # Call's month_graph function to render plot
   output$time_plot <- renderPlotly({
@@ -50,4 +50,3 @@ shinyServer(function(input, output) {
   })
   
 })
-

@@ -10,13 +10,16 @@ sort_by_date <- function(data) {
 }
 
 # Returns the street where the most 911 calls, that meet a given description, happen.
-most_instances <- function(description, data){
-  data$Event.Clearance.Description <- as.character(data$Event.Clearance.Description)
-  data$Hundred.Block.Location <- as.character(data$Hundred.Block.Location)
-  street <- filter(data, Event.Clearance.Description == description) %>% 
-               group_by(Hundred.Block.Location) %>% 
-                summarize(instances = n()) %>%   
-                  arrange(-instances)
+most_instances <- function(description, data) {
+  data$Event.Clearance.Description <-
+    as.character(data$Event.Clearance.Description)
+  data$Hundred.Block.Location <-
+    as.character(data$Hundred.Block.Location)
+  street <-
+    filter(data, Event.Clearance.Description == description) %>%
+    group_by(Hundred.Block.Location) %>%
+    summarize(instances = n()) %>%
+    arrange(-instances)
   value <- street$Hundred.Block.Location[1]
   return(value)
 }
@@ -38,8 +41,8 @@ violent_crimes <- function(data) {
         Event.Clearance.Description == "FIGHT DISTURBANCE" |
         Event.Clearance.Description == "PERSON WITH A WEAPON (NOT GUN)" |
         Event.Clearance.Description == "HARASSMENT, THREATS - BY TELEPHONE, WRITING" |
-        Event.Clearance.Description == "DRIVE BY SHOOTING (NO INJURIES)" 
-      )
+        Event.Clearance.Description == "DRIVE BY SHOOTING (NO INJURIES)"
+    )
   return (data)
 }
 
@@ -119,17 +122,22 @@ format_time <- function(time) {
 format_month_data <- function(data) {
   new_data <- select(data, At.Scene.Time, Event.Clearance.Description)
   
-  with_month <- mutate(new_data, Month = substr(At.Scene.Time, 0, (regexpr("/",At.Scene.Time)-1)))
+  with_month <-
+    mutate(new_data, Month = substr(At.Scene.Time, 0, (regexpr(
+      "/",At.Scene.Time
+    ) - 1)))
   
-  with_common <- with_month %>% 
-    group_by(Month) %>% 
-    summarize(Event.Clearance.Description = names(which.max(table(Event.Clearance.Description))))
+  with_common <- with_month %>%
+    group_by(Month) %>%
+    summarize(Event.Clearance.Description = names(which.max(table(
+      Event.Clearance.Description
+    ))))
   
   summary <- group_by(with_month, Month) %>%
-    summarize(Count = n()) %>% 
+    summarize(Count = n()) %>%
     arrange(-Count)
   
-  joined <- left_join(with_common, summary, by='Month')
+  joined <- left_join(with_common, summary, by = 'Month')
   
   months <- list(
     "January",
