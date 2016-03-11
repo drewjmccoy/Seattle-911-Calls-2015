@@ -23,7 +23,8 @@ month_graph_data <- format_month_data(data)
 call_breakdown_graph_data <- data %>% 
   group_by(Event.Clearance.Group) %>%
   summarize(instances = n()) %>% 
-  arrange(-instances)
+  arrange(-instances) 
+call_breakdown_graph_data[42,1] <- "FAIL TO REGISTER SEX OFFENDER"
 
 specific_breakdown_graph_data <- data %>% 
   group_by(Event.Clearance.Group, Event.Clearance.Description) %>%

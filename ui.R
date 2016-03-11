@@ -5,10 +5,10 @@ library(leaflet)
 library(plotly)
 library(ggmap)
 shinyUI(navbarPage(
-  "Seattle 911 Calls", id = "nav",
+  "Seattle 911 Calls in 2015", id = "nav",
   # Tab that houses the Interactive Map along with sidebar interactivity
   tabPanel(
-    "Interactive map",
+    "Call Map",
     div(class = "outer"),
     
     sidebarPanel(

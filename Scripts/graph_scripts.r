@@ -73,24 +73,30 @@ call_breakdown_graph <- function(data, slice) {
   # select slice of data to graph
   if (slice == 1) {
     data <- slice(data,1:21)
+    graph_title <- "Breakdown of 2015 Seattle 911 Calls by Category"
+    x_axis_title <- ""
+    top_margin <- 100
+    bot_margin <- 125
   } else {
     data <- slice(data,22:42)
+    graph_title <- ""
+    x_axis_title <- "Category of Crime"
+    top_margin <- 25
+    bot_margin <- 150
   }
   
   # create graph
   m1 <- list (
-    b = 150,
-    t = 100,
+    b = bot_margin,
+    t = top_margin,
     r = 125
   )
   f <- list(
-    family = "Arial",
-    size = 10,
-    color = "#7f7f7f"
+    size = 10
   )
   #set x axis title
   x1 <- list (
-    title = "Category of Crime",
+    title = x_axis_title,
     tickfont = f
   )
   #set y axis title
@@ -107,7 +113,7 @@ call_breakdown_graph <- function(data, slice) {
     text = paste(Event.Clearance.Group, ":", instances, "instances", sep = " "),   
     hoverinfo = "text"
     ) %>% 
-    layout(title = "Breakdown of 2015 Seattle 911 Calls by Category", 
+    layout(title = graph_title, 
            xaxis = x1, 
            yaxis = y1, 
            margin = m1
@@ -120,17 +126,22 @@ specific_breakdown_graph <- function(data, crime_type) {
   specific_data <- data %>% 
     filter(Event.Clearance.Group == crime_type) %>% 
     arrange(-instances)
-  
+ bot_margin <- 100
+   if(crime_type == "TRAFFIC RELATED CALLS" |crime_type == "BURGLARY"){
+    bot_margin <- 200
+   }
+ if(crime_type == "NARCOTICS COMPLAINTS"){
+   bot_margin <- 125
+ }
   # create graph
   m2 <- list (
-    b = 250,
+    b = bot_margin,
     r = 100,
     t = 75,
     r = 125
   )
   f <- list(
-  
-    size = 10
+    size = 8
   )
   #set x axis title
   x2 <- list (
