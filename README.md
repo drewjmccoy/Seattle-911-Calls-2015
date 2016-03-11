@@ -1,9 +1,9 @@
 
 911 Calls in Seattle Throughout 2015
 ====================================
-An Interactive web application whose purpose is to display and better understand all the 911 Calls made in the Seattle area in the year 2015. The contributors include Cole Cansler, Brendan Long, Chris Graham and Drew McCoy. You can find the application online [here](https://cdc1996.shinyapps.io/Seattle-911-Calls-2015/)
+An Interactive web application whose purpose is to display and better understand all the 911 Calls made in the Seattle area in the year 2015. The contributors include Cole Cansler, Brendan Long, Chris Graham and Drew McCoy. You can find the application online [here](https://cdc1996.shinyapps.io/Seattle-911-Calls-2015/).
 
-The application is hosted by shinyapps.io [here](https://cdc1996.shinyapps.io/Seattle-911-Calls-2015/)
+The application is hosted by shinyapps.io [here](https://cdc1996.shinyapps.io/Seattle-911-Calls-2015/).
 
 The Data
 --------
