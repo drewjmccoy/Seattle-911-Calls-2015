@@ -1,6 +1,6 @@
 f <- list(
   family = "Arial",
-  size = 15,
+  size = 10,
   color = "#7f7f7f"
 )
 call_breakdown <- function(data, slice){
@@ -29,13 +29,13 @@ call_breakdown <- function(data, slice){
   )
   #set x axis title
   x1 <- list (
-    #title = "Category of Crime",
-    titlefont = f
+    title = "Category of Crime",
+    tickfont = f
   )
   #set y axis title
   y1 <- list (
     title = "Instances",
-    titlefont = f
+    tickfont = f
   )
   state_data <- layout(state_data, title = "Breakdown of 2015 Seattle 911 Calls by Category", xaxis = x1, yaxis = y1, margin = m1)
   return(state_data)
@@ -65,12 +65,12 @@ specific_data <- function(data, crime_type) {
   #set x axis title
   x2 <- list (
     title = "Specific Category of Crime",
-    titlefont = f
+    tickfont = f
   )
   #set y axis title
   y2 <- list (
     title = "Instances",
-    titlefont = f
+    tickfont = f
   )
   individual_plot <- layout(individual_plot, title = paste("Breakdown of 2015 Seattle 911 Calls for", crime_type, "by Subgroup", sep = " "), xaxis = x2, yaxis = y2, margin = m2 )
   return(individual_plot)

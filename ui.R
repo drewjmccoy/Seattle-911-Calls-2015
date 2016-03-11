@@ -24,7 +24,7 @@ shinyUI(navbarPage(
   ),
   # Tab that shows other interactive plots
   tabPanel(
-    "Interactive Plots",
+    "Call Type Breakdown",
     sidebarPanel(selectInput(
       "crime_type", label = h4("Choose Type of Crime"),
       choices = list(
@@ -56,5 +56,13 @@ shinyUI(navbarPage(
       lowerText(),
       plotlyOutput('general_breakdown1'),
       plotlyOutput('general_breakdown2'))
+  ),
+  tabPanel(
+    "Call's Over Time Breakdown",
+    mainPanel(
+      plotlyOutput('month_plot'),
+      plotlyOutput('day_plot'),
+      plotlyOutput('time_plot')
+    )
   )
 ))

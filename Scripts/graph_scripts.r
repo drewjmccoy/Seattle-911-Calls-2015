@@ -1,5 +1,3 @@
-# set working directory
-setwd("/Users/drewmccoy/GitHub/info-498f/assignments/Seattle-911-Calls-2015")
 
 # source in scripts
 source("scripts/data_wrangling.r")
@@ -32,22 +30,8 @@ time_graph <- function(data) {
 
 # returns a bar plotly of calls by month
 month_graph <- function(data) {
-  months <- list(
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  )
   margin <- list(
-    b = 75
+    b = 125
   )
   graph <- plot_ly(data,
           x = Month,
@@ -57,7 +41,7 @@ month_graph <- function(data) {
           text = paste("Most Common Crime Type:", Event.Clearance.Description, "Overall Count", Count,  sep = " "),   
           hoverinfo = "text"
   ) %>% 
-    layout(title = 'Crime by Month', margin = margin)
+    layout(title = 'Crime by Month')
   return(graph)
 }
 
@@ -66,7 +50,6 @@ build_map <- function(data, violent) {
   if (violent) {
     data <- violent_crimes(data)
   }
-  
   map <- leaflet(data) %>% addTiles() %>% addMarkers(
     clusterOptions = markerClusterOptions(),popup = ~ as.character(Event.Clearance.Description)
   )

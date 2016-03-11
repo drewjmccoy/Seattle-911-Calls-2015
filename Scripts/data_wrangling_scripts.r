@@ -115,6 +115,7 @@ format_time <- function(time) {
   return(as.integer(substr(time, nchar(time) - 4, nchar(time) - 3)))
 }
 
+# Format's data for the month graph
 format_month_data <- function(data) {
   new_data <- select(data, At.Scene.Time, Event.Clearance.Description)
   
@@ -130,6 +131,20 @@ format_month_data <- function(data) {
   
   joined <- left_join(with_common, summary, by='Month')
   
+  months <- list(
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  )
   months_fixed <- mutate(joined, Month = months)
   
   return (months_fixed)

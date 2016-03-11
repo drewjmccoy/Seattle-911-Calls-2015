@@ -1,5 +1,4 @@
-# set working directory and read in data
-setwd("/Users/drewmccoy/GitHub/info-498f/assignments/Seattle-911-Calls-2015")
+# Read in data
 data <- read.csv("data/911Calls.csv", stringsAsFactors = FALSE)
 
 # source in scripts
