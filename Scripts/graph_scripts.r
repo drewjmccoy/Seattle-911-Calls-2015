@@ -16,6 +16,9 @@ graph_to_display <- function(graph_num){
 }
 
 day_graph <- function(data) {
+  margin <- list(
+    t = 50
+  )
   graph <- data %>% plot_ly(
     x = date,
     y = calls, 
@@ -23,12 +26,15 @@ day_graph <- function(data) {
   ) %>% 
     layout(title = "Calls by Day of the Year",
            yaxis = list(title = "Number of Calls"), 
-           xaxis = list(title = "Date"))
+           xaxis = list(title = "Date"),margin = margin)
   return(graph)
 }  
 
 # returns a scatter plotly of calls by time of day
 time_graph <- function(data) {
+  margin <- list(
+   t = 50
+  )
   graph <- data %>% plot_ly(
     x = time,
     y = calls, 
@@ -36,7 +42,7 @@ time_graph <- function(data) {
   ) %>% 
     layout(title = "Calls by Time of the Day",
            yaxis = list(title = "Number of Calls"), 
-           xaxis = list(title = "Time in Hours"))
+           xaxis = list(title = "Time in Hours"), margin = margin)
   return(graph)
 }
 
@@ -44,7 +50,8 @@ time_graph <- function(data) {
 month_graph <- function(data) {
   margin <- list(
     b = 100,
-    r = 50
+    r = 50,
+    t = 50
   )
   graph <- plot_ly(data,
           x = Month,
