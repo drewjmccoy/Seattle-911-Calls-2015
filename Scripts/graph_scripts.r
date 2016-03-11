@@ -14,6 +14,7 @@ graph_to_display <- function(graph_num){
   }
   return (graph)
 }
+
 day_graph <- function(data) {
   graph <- data %>% plot_ly(
     x = date,
