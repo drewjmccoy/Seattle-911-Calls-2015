@@ -23,9 +23,13 @@ day_graph <- function(data) {
     x = date,
     y = calls, 
     mode = "markers"
-    )
+    ) %>% 
+    layout(title = "Calls by Day of the Year",
+           yaxis = list(title = "Number of Calls"), 
+           xaxis = list(title = "Date"))
   return(graph)
 }  
+day_graph(data)
 
 time_graph <- function(data) {
   sorted_data <- data %>% 
@@ -37,7 +41,10 @@ time_graph <- function(data) {
     x = time,
     y = calls, 
     mode = "markers"
-  )
+  ) %>% 
+    layout(title = "Calls by Time of the Day",
+           yaxis = list(title = "Number of Calls"), 
+           xaxis = list(title = "Time"))
   return(graph)
 }
 
