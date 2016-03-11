@@ -73,7 +73,7 @@ shinyUI(navbarPage(
     mainPanel(
       headerText <- renderText({
         "Below are three different display options for 911 calls in Seattle in 2015 based on time frames. The first graph
-        shows how many calls there were per month, as well as the monst common type of incident that caused the call. The 
+        shows how many calls there were per month, as well as the most common type of incident that caused the call. The 
         second graph shows how many calls there were per day, and the third shows the number of calls, on average, in each
         hour of the day in 2015."
       }),
