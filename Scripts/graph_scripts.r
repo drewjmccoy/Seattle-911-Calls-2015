@@ -3,6 +3,18 @@
 source("scripts/data_wrangling.r")
 
 # returns a scatter plotly of calls by day of year
+graph_to_display <- function(graph_num){
+  if(graph_num == 1){
+    graph <- month_graph(month_graph_data)
+  }
+  if(graph_num == 2){
+    graph <- day_graph(day_graph_data)
+  }
+  if(graph_num == 3){
+    graph <- time_graph(time_graph_data)
+  }
+  return (graph)
+}
 day_graph <- function(data) {
   graph <- data %>% plot_ly(
     x = date,

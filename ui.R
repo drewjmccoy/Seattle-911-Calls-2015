@@ -59,10 +59,14 @@ shinyUI(navbarPage(
   ),
   tabPanel(
     "Call's Over Time Breakdown",
+    sidebarPanel(
+      radioButtons("graph_choice", label = h3("Graph to Display"),
+                   choices = list("Month Graph" = 1, "Day Graph" = 2, "Hour Graph" = 3), 
+                   selected = 1)
+    ),
     mainPanel(
-      plotlyOutput('month_plot'),
-      plotlyOutput('day_plot'),
-      plotlyOutput('time_plot')
+      plotlyOutput("time_plot")
+
     )
   )
 ))

@@ -28,17 +28,10 @@ shinyServer(function(input, output) {
     call_breakdown(data,2)
   }) 
   # Call's month_graph function to render plot
-  output$month_plot <- renderPlotly({
-    month_graph(month_graph_data)
-  })
-  # Call's day_graph function to render plot
-  output$day_plot <- renderPlotly({
-    day_graph(day_graph_data)
-  })
-  # Call's time_graph function to render plot
   output$time_plot <- renderPlotly({
-    time_graph(time_graph_data)
+    graph_to_display(input$graph_choice)
   })
+  
   # Observe function that updates what part of the map is viewed
   observe({
     input$violent_crimes
