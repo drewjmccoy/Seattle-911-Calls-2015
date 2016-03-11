@@ -27,7 +27,7 @@ shinyServer(function(input, output) {
   
   # Call's  call_breakdown funciton to render plot
   output$general_breakdown2 <- renderPlotly({
-    call_breakdown_graph(call_breakdown_graph_data, 1)
+    call_breakdown_graph(call_breakdown_graph_data, 2)
   }) 
   
   # Call's month_graph function to render plot
