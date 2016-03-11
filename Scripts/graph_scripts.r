@@ -129,9 +129,8 @@ specific_breakdown_graph <- function(data, crime_type) {
     r = 125
   )
   f <- list(
-    family = "Arial",
-    size = 10,
-    color = "#7f7f7f"
+  
+    size = 10
   )
   #set x axis title
   x2 <- list (
